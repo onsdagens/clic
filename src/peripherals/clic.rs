@@ -71,7 +71,7 @@ impl CLIC {
     pub fn is_pending<I>(interrupt: I) -> bool
     where
         I: InterruptNumber,
-    {
+    { 
         let nr = interrupt.number();
 
         unsafe { (*Self::PTR).interrupts[nr as usize][0].read()!=0 }
