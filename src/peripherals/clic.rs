@@ -27,7 +27,7 @@ impl ops::Deref for CLIC {
 impl CLIC {
     /// Disables `interrupt`
     #[inline]
-    pub fn mask<I>(interrupt: I)
+    pub fn mask<I>(&mut self, interrupt: I)
     where
         I: InterruptNumber,
     {
@@ -37,7 +37,7 @@ impl CLIC {
 
     /// Enables interrupt
     #[inline]
-    pub unsafe fn unmask<I>(interrupt: I)
+    pub unsafe fn unmask<I>(&mut self, interrupt: I)
     where
         I: InterruptNumber,
     {
@@ -47,7 +47,7 @@ impl CLIC {
 
     /// Returns the CLIC priority of interrupt
     #[inline]
-    pub fn get_priority<I>(interrupt: I) -> u8
+    pub fn get_priority<I>(&mut self, interrupt: I) -> u8
     where
         I: InterruptNumber,
     {
@@ -58,7 +58,7 @@ impl CLIC {
 
     /// Checks if interrupt is enabled
     #[inline]
-    pub fn is_enabled<I>(interrupt: I) -> bool
+    pub fn is_enabled<I>(&mut self, interrupt: I) -> bool
     where
         I: InterruptNumber,
     {
@@ -68,7 +68,7 @@ impl CLIC {
 
     /// Checks if interrupt is pending
     #[inline]
-    pub fn is_pending<I>(interrupt: I) -> bool
+    pub fn is_pending<I>(&mut self, interrupt: I) -> bool
     where
         I: InterruptNumber,
     { 
@@ -79,7 +79,7 @@ impl CLIC {
 
     /// Forces interrupt into pending state
     #[inline]
-    pub fn pend<I>(interrupt: I)
+    pub fn pend<I>(&mut self, interrupt: I)
     where
         I: InterruptNumber,
     {
@@ -99,7 +99,7 @@ impl CLIC {
 
     /// Clears interrupt's pending state
     #[inline]
-    pub fn unpend<I>(interrupt: I)
+    pub fn unpend<I>(&mut self, interrupt: I)
     where
         I: InterruptNumber,
     {
