@@ -1,3 +1,5 @@
+use core::arch::asm;
+
 #[derive(Clone, Copy)]
 #[repr(u16)]
 pub enum Interrupt{
@@ -24,6 +26,82 @@ pub enum Interrupt{
     Interrupt20 = 20,
     Interrupt21 = 21,
     Interrupt22 = 22,
+}
+
+pub struct Interrupt0;
+pub struct Interrupt1;
+pub struct Interrupt2;
+pub struct Interrupt3;
+pub struct Interrupt4;
+pub struct Interrupt5;
+pub struct Interrupt6;
+pub struct Interrupt7;
+pub struct Interrupt8;
+pub struct Interrupt9;
+
+pub unsafe trait Pend{
+    unsafe fn pend_int();
+}
+
+unsafe impl Pend for Interrupt0 {
+    #[inline(always)]
+    unsafe fn pend_int() {
+        asm!("csrrsi zero, 0xB00, 1");
+    }
+}
+unsafe impl Pend for Interrupt1 {
+    #[inline(always)]
+    unsafe fn pend_int() {
+        asm!("csrrsi zero, 0xB01, 1");
+    }
+}
+unsafe impl Pend for Interrupt2 {
+    #[inline(always)]
+    unsafe fn pend_int() {
+        asm!("csrrsi zero, 0xB02, 1");
+    }
+}
+unsafe impl Pend for Interrupt3 {
+    #[inline(always)]
+    unsafe fn pend_int() {
+        asm!("csrrsi zero, 0xB03, 1");
+    }
+}
+unsafe impl Pend for Interrupt4 {
+    #[inline(always)]
+    unsafe fn pend_int() {
+        asm!("csrrsi zero, 0xB04, 1");
+    }
+}
+unsafe impl Pend for Interrupt5 {
+    #[inline(always)]
+    unsafe fn pend_int() {
+        asm!("csrrsi zero, 0xB05, 1");
+    }
+}
+unsafe impl Pend for Interrupt6 {
+    #[inline(always)]
+    unsafe fn pend_int() {
+        asm!("csrrsi zero, 0xB06, 1");
+    }
+}
+unsafe impl Pend for Interrupt7 {
+    #[inline(always)]
+    unsafe fn pend_int() {
+        asm!("csrrsi zero, 0xB07, 1");
+    }
+}
+unsafe impl Pend for Interrupt8 {
+    #[inline(always)]
+    unsafe fn pend_int() {
+        asm!("csrrsi zero, 0xB08, 1");
+    }
+}
+unsafe impl Pend for Interrupt9 {
+    #[inline(always)]
+    unsafe fn pend_int() {
+        asm!("csrrsi zero, 0xB09, 1");
+    }
 }
 
 pub unsafe trait InterruptNumber{
