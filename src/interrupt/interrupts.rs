@@ -12,7 +12,7 @@ pub enum Interrupt{
     Interrupt6 = 6,
     Interrupt7 = 7,
     Interrupt8 = 8,
-    Interrupt9 = 9,
+    MTIME = 9,
     Interrupt10 = 10,
     Interrupt11 = 11,
     Interrupt12 = 12,
